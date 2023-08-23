@@ -1,0 +1,9 @@
+*{
+  font-family: 'Kumbh Sans', sans-serif;
+}
+
+body{
+  height: 100dvh;
+  width: 100vw;
+  box-sizing: border-box;
+}
