@@ -1,17 +1,17 @@
-import plus from '../assets/icon-plus.svg';
-import minus from '../assets/icon-minus.svg';
-import { useState } from 'react';
+import plus from "../assets/icon-plus.svg";
+import minus from "../assets/icon-minus.svg";
+import cart from "../assets/icon-cart.svg";
+import { useState } from "react";
 
 function ItemDetails() {
-
   const sneakerInfo = {
     companyName: "Sneaker Company",
     productName: "Fall Limited Edition Sneakers",
     description:
       "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
-    currentPrice: 125.00,
+    currentPrice: 125.0,
     discountPercentage: "50%",
-    originalPrice: 250.00,
+    originalPrice: 250.0,
   };
 
   const [cartItem, setCartItem] = useState(0);
@@ -19,51 +19,94 @@ function ItemDetails() {
 
   const decreaseItems = () => {
     if (cartItem > 0) {
-      setCartItem(prev => prev - 1);
-      setPrice(prev => prev - sneakerInfo.currentPrice);
-    } else {
+      setCartItem((prev) => prev - 1);
+
+      setPrice((prev) => prev - sneakerInfo.currentPrice);
+    }
+    if (cartItem - 1 === 0 || cartItem === 0) {
       setPrice(sneakerInfo.currentPrice);
     }
   };
 
   const increaseItem = () => {
-    if(price === sneakerInfo.currentPrice && cartItem ===0){
-      setCartItem(prev => prev + 1);
+    if (price === sneakerInfo.currentPrice && cartItem === 0) {
+      setCartItem((prev) => prev + 1);
       setPrice(sneakerInfo.currentPrice);
-    }else{
-      setCartItem(prev => prev + 1);
-      setPrice(prev => prev + sneakerInfo.currentPrice);
+    } else {
+      setCartItem((prev) => prev + 1);
+      setPrice((prev) => prev + sneakerInfo.currentPrice);
     }
-
   };
 
+  const moveToCart =() =>{
+
+  }
+
   return (
-    <div className="flex flex-col h-full justify-center items-center">
-      <p className=" uppercase">{sneakerInfo.companyName}</p>
-      <h3>
-        {sneakerInfo.productName}
-      </h3>
-      <p>{sneakerInfo.description}</p>
+    <div className="flex flex-col h-full justify-start items-start">
+      <p className=" uppercase text-primary-orange font-c-bold text-sm my-3 tracking-wider">
+        {sneakerInfo.companyName}
+      </p>
+      <hgroup className="w-10/12">
+        <h3 className="text-5xl  font-c-bold my-3 text-very-dark-blue">
+          {sneakerInfo.productName}
+        </h3>
+        <p className=" p-1 text-dark-grayish-blue text-justify w-11/12 my-2">
+          {sneakerInfo.description}
+        </p>
+      </hgroup>
 
-      <div>
-        <p>
-        ${price}
-        </p>
-        <p>
-          {sneakerInfo.discountPercentage}
-        </p>
-        <p>
+      <div className="my-2">
+        <div className="flex w-8/12 justify-between items-center">
+          <p className="mr-3 text-2xl font-c-bold">${price}</p>
+          <p className="ml-3 bg-primary-pale-orange p-1 rounded-lg text-primary-orange font-c-bold drop-shadow">
+            {sneakerInfo.discountPercentage}
+          </p>
+        </div>
+        <span className="block text-base font-bold line-through  text-grayish-blue">
           $ {sneakerInfo.originalPrice}
-        </p>
-
+        </span>
       </div>
 
-      <div className='w-2/4'>
-        <img src={minus} alt="Minus Sign" className='hover:cursor-pointer' role='button' onClick={decreaseItems} />
-        <p>{cartItem}</p>
-        <img src={plus} alt="Plus sign" className='hover:cursor-pointer' role='button' onClick={increaseItem} />
-      </div>
+      <div className="flex justify-between items-center w-full">
+        <div className="w-1/4 flex items-center justify-around h-auto bg-light-grayish-blue py-1 px-3 rounded-lg shadow-md ">
+          <div
+            className="px-4 py-3 flex items-center justify-center hover:opacity-60"
+            role="button"
+            onClick={decreaseItems}
+          >
+            <img
+              src={minus}
+              alt="Minus Sign"
+              className="hover:cursor-pointer hover:opacity-60 py-auto px-auto min-h-max min-w-max"
+            />
+          </div>
 
+          <p className="font-bold text-lg">{cartItem}</p>
+          <div
+            role="button"
+            onClick={increaseItem}
+            className="px-4 py-3 flex items-center justify-center hover:opacity-60"
+          >
+            <img
+              src={plus}
+              alt="Plus sign"
+              className="hover:cursor-pointer hover:opacity-60 min-h-max min-w-max"
+            />
+          </div>
+        </div>
+        <div className="w-full flex items-center justify-center bg-white">
+          <button className="py-3 px-auto flex justify-center items-center w-full mx-4 bg-primary-orange rounded-lg shadow-lg drop-shadow hover:brightness-110 " onClick={moveToCart}>
+            <img
+              src={cart}
+              alt="Cart Logo"
+              className="mr-3 w-5 h-5"
+              style={{ filter: "brightness(0) invert(1)" }}
+            />
+            <p className="text-white font-bold"> Add to cart</p>
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

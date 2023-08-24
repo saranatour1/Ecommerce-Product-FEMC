@@ -32,7 +32,7 @@ function ImageCarousel() {
         src={item.sm}
         alt='product'
         onClick={() => setItemIndex(idx)}
-        className={`w-1/2 rounded-lg  hover:cursor-pointer ${itemIndex === idx && ' border border-y-2 border-primary-orange inset-0 bg-white opacity-50'}`}
+        className={`w-1/2 rounded-lg  hover:cursor-pointer ${itemIndex === idx && ' border border-y-2 border-primary-orange inset-0 bg-primary-pale-orange opacity-50'}`}
       />
     ))}
   </div>
