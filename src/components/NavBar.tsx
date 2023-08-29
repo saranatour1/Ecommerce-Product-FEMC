@@ -34,7 +34,12 @@ function NavBar({cartItem}:ParentProps) {
   const [cartItems ,setCartItems] =useState([]);
 
   useEffect(() => {
-    setCartItems([...cartItems , cartItem]);
+    if(cartItem && !isNaN(cartItem.id)){
+      setCartItems([...cartItems , cartItem]);
+    }else{
+      setCartItems([])
+    }
+
   }, [cartItem]);
   
 
