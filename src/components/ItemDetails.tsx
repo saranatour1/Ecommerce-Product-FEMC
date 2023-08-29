@@ -1,9 +1,22 @@
 import plus from "../assets/icon-plus.svg";
 import minus from "../assets/icon-minus.svg";
 import cart from "../assets/icon-cart.svg";
+import productSmOne from '../assets/image-product-1-thumbnail.jpg';
 import { useState } from "react";
 
-function ItemDetails() {
+interface CartItem {
+  id: number;
+  itemName: string;
+  itemPrice: number;
+  itemCount: number;
+  itemPriceAfter: number;
+  imgLink: string;
+}
+interface ParentProps{
+  getItem(item: CartItem): void;
+}
+
+function ItemDetails({getItem}:ParentProps) {
   const sneakerInfo = {
     companyName: "Sneaker Company",
     productName: "Fall Limited Edition Sneakers",
@@ -16,6 +29,9 @@ function ItemDetails() {
 
   const [cartItem, setCartItem] = useState(0);
   const [price, setPrice] = useState(sneakerInfo.currentPrice);
+  const [id, setId] = useState(0);
+
+  // id: 1, itemName:'Fall Limited Edition Sneakers' , itemPrice:125 , itemCount:1,itemPriceAfter:125 , imgLink:productSmOne
 
   const decreaseItems = () => {
     if (cartItem > 0) {
@@ -38,9 +54,16 @@ function ItemDetails() {
     }
   };
 
-  const moveToCart =() =>{
 
-  }
+
+  const moveToCart = () => {
+   let cartObject={id:id, itemName:sneakerInfo.productName , itemPrice:sneakerInfo.currentPrice, itemCount:cartItem, itemPriceAfter:price , imgLink:productSmOne};
+    setCartItem(0);
+    setPrice(sneakerInfo.currentPrice);
+    setId(prev => prev+=1);
+    console.log(cartObject)
+    getItem(cartObject)
+  };
 
   return (
     <div className="flex flex-col h-full justify-start items-start">
@@ -95,8 +118,11 @@ function ItemDetails() {
             />
           </div>
         </div>
-        <div className="w-full flex items-center justify-center bg-white">
-          <button className="py-3 px-auto flex justify-center items-center w-full mx-4 bg-primary-orange rounded-lg shadow-lg drop-shadow hover:brightness-110 " onClick={moveToCart}>
+        <div className="w-full flex items-center justify-start bg-white">
+          <button
+            className="py-3 px-16 flex justify-center items-center  mx-4 bg-primary-orange rounded-lg shadow-lg drop-shadow hover:brightness-110  hover:opacity-50"
+            onClick={moveToCart}
+          >
             <img
               src={cart}
               alt="Cart Logo"

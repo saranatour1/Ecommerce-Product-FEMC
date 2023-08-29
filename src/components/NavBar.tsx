@@ -3,8 +3,23 @@ import cart from "../assets/icon-cart.svg";
 import avatar from "../assets/image-avatar.png";
 import { useState } from "react";
 import CartMenu from "./CartMenu";
+import { useEffect } from "react";
 
-function NavBar() {
+interface CartItem {
+  id: number;
+  itemName: string;
+  itemPrice: number;
+  itemCount: number;
+  itemPriceAfter: number;
+  imgLink: string;
+}
+
+interface ParentProps{
+  cartItem: CartItem;
+}
+
+
+function NavBar({cartItem}:ParentProps) {
   const routes = [
     ["/collections", "Collections"],
     ["/men", "Men"],
@@ -15,6 +30,18 @@ function NavBar() {
 
 
   const [isCart, setIsCart] = useState(false);
+
+  const [cartItems ,setCartItems] =useState([]);
+
+  useEffect(() => {
+    setCartItems([...cartItems , cartItem]);
+  }, [cartItem]);
+  
+
+  const deleteById =(id:number)=>{
+    setCartItems(prev => prev.filter(item => item.id !==id))
+  }
+
 
   const showCart = () => {
     setIsCart(!isCart);
@@ -50,11 +77,10 @@ function NavBar() {
             <img src={cart} alt="Cart Logo" className="" />
             <span className="sr-only">Notifications</span>
             <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-primary-orange border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900">
-              20
+              {Object.entries(cartItems).length}
             </div>
           </button>
-          {isCart && <CartMenu />}
-
+          {isCart && <CartMenu  items={cartItems} resetItems={()=> setCartItems([])}  deleteItemById={(item) => deleteById(item)}/>}
 
 
 
