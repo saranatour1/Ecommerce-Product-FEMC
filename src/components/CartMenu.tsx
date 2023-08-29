@@ -33,10 +33,10 @@ function CartMenu({items ,resetItems , deleteItemById}:ParentProps) {
     return setCartItems(items);
   },[items])
 
-  console.log(cartItems.length ,items.length)
+  // console.log(cartItems.length ,items.length)
 
   return (
-    <div id="dropdown" className="z-10 mt-44  mr-80  bg-white divide-y divide-gray-100 rounded-lg drop-shadow  dark:bg-gray-700 absolute w-80 shadow-lg">
+    <div id="dropdown" className="z-10 mt-44 mr-15  bg-white divide-y divide-gray-100 rounded-lg drop-shadow  dark:bg-gray-700 absolute w-80 shadow-lg">
     <div className="border-b p-2 font-bold indent-3">Cart</div>
     <div className="flex flex-col justify-center items-center p-1">
       {cartItems.length > 0 ? (

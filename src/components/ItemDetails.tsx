@@ -57,12 +57,15 @@ function ItemDetails({getItem}:ParentProps) {
 
 
   const moveToCart = () => {
-   let cartObject={id:id, itemName:sneakerInfo.productName , itemPrice:sneakerInfo.currentPrice, itemCount:cartItem, itemPriceAfter:price , imgLink:productSmOne};
-    setCartItem(0);
-    setPrice(sneakerInfo.currentPrice);
-    setId(prev => prev+=1);
-    console.log(cartObject)
-    getItem(cartObject)
+    if(cartItem>0){
+      let cartObject={id:id, itemName:sneakerInfo.productName , itemPrice:sneakerInfo.currentPrice, itemCount:cartItem, itemPriceAfter:price , imgLink:productSmOne};
+      setCartItem(0);
+      setPrice(sneakerInfo.currentPrice);
+      setId(prev => prev+=1);
+      // console.log(cartObject)
+      getItem(cartObject)
+    }
+
   };
 
   return (

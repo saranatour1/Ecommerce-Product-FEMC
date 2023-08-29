@@ -7,7 +7,7 @@ import NavBar from './components/NavBar'
 function App() {
   const [cartItem, setCartItem] = useState({})
 
-  console.log(cartItem);
+  // console.log(cartItem);
   return (
     <>
      <NavBar cartItem={cartItem} />
