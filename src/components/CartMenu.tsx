@@ -18,7 +18,7 @@ interface ParentProps {
 }
 function CartMenu({items ,resetItems , deleteItemById}:ParentProps) {
   //{itemName:'' , itemPrice:0 , itemCount:0,itemPriceAfter:0}
-  const [cartItems ,setCartItems] =useState([]);
+  const [cartItems ,setCartItems] =useState<CartItem[]>([]);
 
   const deleteById=(id:number)=>{
     setCartItems(prev => prev.filter(item => item.id !==id))
