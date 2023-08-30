@@ -58,14 +58,14 @@ function ImageCarousel() {
   <img src={images[itemIndex].lg} alt="product" className=' rounded-lg my-4' />
   {isMobile && <img src={right} alt=' Next icon' className='relative right-9 px-2 py-2  rounded-full bg-white' role='button' onClick={moveRight}/>}
   </div>
-  {!isMobile &&   <div className='flex w-full gap-1 justify-between'>
+  {!isMobile &&   <div className='flex w-full gap-1 items-center justify-between'>
     {images.map((item, idx) => (
       <img
         key={idx}
         src={item.sm}
         alt='product'
         onClick={() => setItemIndex(idx)}
-        className={`w-1/2 rounded-lg  hover:cursor-pointer ${itemIndex === idx && ' border border-y-2 border-primary-orange inset-0 bg-primary-pale-orange opacity-50'}`}
+        className={`w-1/4 rounded-lg  hover:cursor-pointer ${itemIndex === idx && ' border border-y-2 border-primary-orange inset-0 bg-primary-pale-orange opacity-50'}`}
       />
     ))}
   </div>}
