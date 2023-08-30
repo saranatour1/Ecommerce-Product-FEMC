@@ -69,33 +69,33 @@ function ItemDetails({getItem}:ParentProps) {
   };
 
   return (
-    <div className="flex flex-col h-full justify-start items-start">
-      <p className=" uppercase text-primary-orange font-c-bold text-sm my-3 tracking-wider">
+    <div className="flex flex-col h-full justify-start items-start p-2">
+      <p className=" uppercase text-primary-orange font-c-bold text-sm my-3 tracking-wider max-xs:my-0">
         {sneakerInfo.companyName}
       </p>
-      <hgroup className="w-10/12">
-        <h3 className="text-5xl  font-c-bold my-3 text-very-dark-blue">
+      <hgroup className="">
+        <h3 className="text-5xl max-xs:text-3xl  font-c-bold my-3 text-very-dark-blue max-xs:my-1">
           {sneakerInfo.productName}
         </h3>
-        <p className=" p-1 text-dark-grayish-blue text-justify w-11/12 my-2">
+        <p className=" p-1 text-dark-grayish-blue text-justify w-11/12 my-2 max-xs:my-0 max-xs:w-full max-xs:text-ellipsis">
           {sneakerInfo.description}
         </p>
       </hgroup>
 
-      <div className="my-2">
-        <div className="flex w-8/12 justify-between items-center">
+      <div className="my-2 max-xs:flex max-xs:justify-between max-xs:w-full max-xs:items-center">
+        <div className="flex w-8/12 justify-between max-xs:justify-start items-center max-xs:self-start">
           <p className="mr-3 text-2xl font-c-bold">${price}</p>
           <p className="ml-3 bg-primary-pale-orange p-1 rounded-lg text-primary-orange font-c-bold drop-shadow">
             {sneakerInfo.discountPercentage}
           </p>
         </div>
-        <span className="block text-base font-bold line-through  text-grayish-blue">
+        <span className="block text-base font-bold line-through  text-grayish-blue  max-xs:self-end max-xs:pb-1">
           $ {sneakerInfo.originalPrice}
         </span>
       </div>
 
-      <div className="flex justify-between items-center w-full">
-        <div className="w-1/4 flex items-center justify-around h-auto bg-light-grayish-blue py-1 px-3 rounded-lg shadow-md ">
+      <div className="flex justify-between items-center w-full max-xs:flex-col">
+        <div className="w-1/4 flex items-center justify-around h-auto bg-light-grayish-blue py-1 px-3 rounded-lg shadow-md max-xs:w-full max-xs:my-1 ">
           <div
             className="px-4 py-3 flex items-center justify-center hover:opacity-60"
             role="button"
@@ -121,15 +121,15 @@ function ItemDetails({getItem}:ParentProps) {
             />
           </div>
         </div>
-        <div className="w-full flex items-center justify-start bg-white">
+        <div className="w-full flex items-center justify-start bg-white ">
           <button
-            className="py-3 px-16 flex justify-center items-center  mx-4 bg-primary-orange rounded-lg shadow-lg drop-shadow hover:brightness-110  hover:opacity-50"
+            className="py-3 px-16 flex justify-center items-center  mx-4 max-xs:mx-0 bg-primary-orange rounded-lg shadow-lg drop-shadow hover:brightness-110  hover:opacity-50 max-xs:w-full"
             onClick={moveToCart}
           >
             <img
               src={cart}
               alt="Cart Logo"
-              className="mr-3 w-5 h-5"
+              className="mr-3 w-5 h-5 "
               style={{ filter: "brightness(0) invert(1)" }}
             />
             <p className="text-white font-bold"> Add to cart</p>

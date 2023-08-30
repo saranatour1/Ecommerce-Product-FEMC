@@ -9,10 +9,10 @@ function App() {
 
   // console.log(cartItem);
   return (
-    <>
+    <div className=' overflow-x-hidden '>
      <NavBar cartItem={cartItem} />
      <ItemComponent getItem={(item) => setCartItem(item)} />
-    </>
+    </div>
   )
 }
 

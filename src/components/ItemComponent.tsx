@@ -16,11 +16,11 @@ interface ParentProps{
 function ItemComponent({getItem}:ParentProps) {
 
   return (
-    <main className=" w-9/12 flex justify-between items-center mx-auto my-4 max-sm:flex-col  ">
-      <div className="flex-1 h-1/2">
+    <main className=" w-9/12 flex justify-between items-center mx-auto my-4 max-sm:flex-col max-xs:w-screen  ">
+      <div className="flex-1 h-1/2 max-xs:w-screen ">
         <ImageCarousel/>
       </div>
-      <div className="flex-1 lg:w-10/12 xl:w-10/12 sm:w-8/12 h-1/2">
+      <div className="flex-1 lg:w-10/12 xl:w-10/12 sm:w-8/12 max-xs:w-full h-1/2">
         <ItemDetails getItem={(item) => getItem(item)} />
       </div>
     </main>
