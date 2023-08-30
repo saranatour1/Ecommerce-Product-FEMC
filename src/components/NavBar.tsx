@@ -31,7 +31,7 @@ function NavBar({ cartItem }: ParentProps) {
 
   const [isCart, setIsCart] = useState(false);
 
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   const [isMobile, setIsMobile] = useState(window.innerWidth < 700);
   const [openMobile, setOpenMobile] = useState(false);

@@ -58,7 +58,7 @@ function ItemDetails({getItem}:ParentProps) {
 
   const moveToCart = () => {
     if(cartItem>0){
-      let cartObject={id:id, itemName:sneakerInfo.productName , itemPrice:sneakerInfo.currentPrice, itemCount:cartItem, itemPriceAfter:price , imgLink:productSmOne};
+      const cartObject={id:id, itemName:sneakerInfo.productName , itemPrice:sneakerInfo.currentPrice, itemCount:cartItem, itemPriceAfter:price , imgLink:productSmOne};
       setCartItem(0);
       setPrice(sneakerInfo.currentPrice);
       setId(prev => prev+=1);
